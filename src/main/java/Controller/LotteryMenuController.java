@@ -27,11 +27,11 @@ public class LotteryMenuController {
             promptForGameMode = input.nextLine().trim();
 
             if (promptForGameMode.equalsIgnoreCase("6aus49") || promptForGameMode.isEmpty()) {
-                if (!playLotteryGame(lottery)) {
+                if (playLotteryGame(lottery)) {
                     break;
                 }
             } else if (promptForGameMode.equalsIgnoreCase("Eurojackpot")) {
-                if (!playLotteryGame(eurojackpot)) {
+                if (playLotteryGame(eurojackpot)) {
                     break;
                 }
             } else if (promptForGameMode.equalsIgnoreCase("Exit")) {
@@ -46,7 +46,7 @@ public class LotteryMenuController {
     private boolean playLotteryGame(LotteryType lotteryGame) {
         while (true) {
             System.out.println(Messages.ACTION_COMMAND);
-            String selection = input.next();
+            String selection = input.nextLine();
 
             switch (selection) {
                 case "1":
@@ -54,9 +54,12 @@ public class LotteryMenuController {
                     break;
                 case "2":
                     System.out.println(Messages.END_COMMAND);
-                    return false;
-                case "3":
                     return true;
+                case "3":
+                    return false;
+                case "4":
+                    lotteryGame.newUnluckyNumbers();
+                    continue;
                 default:
                     break;
             }

@@ -1,6 +1,7 @@
 package GameModes;
 
 import Interface.LotteryType;
+import Utility.UnluckyUtil;
 
 import java.util.*;
 
@@ -8,11 +9,6 @@ import java.util.*;
  * The EurojackpotLottery class for playing Eurojackpot. Currently only implements generating random numbers.
  */
 public class Eurojackpot implements LotteryType {
-    private List<Integer> unluckyNumbers;
-
-    public Eurojackpot() {
-        this.unluckyNumbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    }
 
     @Override
     public List<Integer> generateRandomNumbers() {
@@ -22,7 +18,7 @@ public class Eurojackpot implements LotteryType {
         while (randomNumbers.size() < 5) {
             int number = random.nextInt(50) + 1;
             if (!randomNumbers.contains(number)
-                    && (unluckyNumbers == null || !unluckyNumbers.contains(number))) {
+                    && (!UnluckyUtil.getUnluckyNumbers().contains(number))) {
                 randomNumbers.add(number);
             }
         }
@@ -31,7 +27,7 @@ public class Eurojackpot implements LotteryType {
         while (euroNumbers.size() < 2) {
             int euroNumber = random.nextInt(12) + 1;
             if (!euroNumbers.contains(euroNumber)
-                    && (unluckyNumbers == null || !unluckyNumbers.contains(euroNumber))) {
+                    && (!UnluckyUtil.getUnluckyNumbers().contains(euroNumber))) {
                 euroNumbers.add(euroNumber);
             }
         }
@@ -44,5 +40,9 @@ public class Eurojackpot implements LotteryType {
         combinedNumbers.addAll(euroNumbers);
 
         return combinedNumbers;
+    }
+
+    @Override
+    public void newUnluckyNumbers() {
     }
 }

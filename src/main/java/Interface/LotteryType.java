@@ -8,4 +8,6 @@ import java.util.List;
 public interface LotteryType {
 
     List<Integer> generateRandomNumbers();
+
+    void newUnluckyNumbers();
 }

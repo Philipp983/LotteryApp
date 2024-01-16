@@ -1,6 +1,8 @@
 package GameModes;
 
 import Interface.LotteryType;
+import Messages.Messages;
+import Utility.UnluckyUtil;
 
 import java.util.*;
 
@@ -9,13 +11,7 @@ import java.util.*;
  */
 
 public class Lottery implements LotteryType {
-    private List<Integer> unluckyNumbers;
-
-    // Constructor with hard coded list of unlucky numbers, to see if the generating works and doesn't include these unlucky numbers.
-    public Lottery() {
-        this.unluckyNumbers = Arrays.asList(1, 20, 44);
-    }
-
+    @Override
     public List<Integer> generateRandomNumbers() {
 
         List<Integer> randomNumbers = new ArrayList<>();
@@ -27,12 +23,44 @@ public class Lottery implements LotteryType {
             randomNumber = random.nextInt(49) + 1;
 
             if (!randomNumbers.contains(randomNumber)
-                    && (unluckyNumbers == null ||!unluckyNumbers.contains(randomNumber))) {
+                    && (!UnluckyUtil.getUnluckyNumbers().contains(randomNumber))) { //Compare the random numbers to the numbers from the Util class
                 randomNumbers.add(randomNumber);
             }
         }
         Collections.sort(randomNumbers);
         return randomNumbers;
+    }
+
+    @Override
+    public void newUnluckyNumbers() {
+        List<Integer> unluckyLottoNumbers = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\n" + Messages.ENTERING_UNLUCKY_NUMBERS);
+
+        while (unluckyLottoNumbers.size() < 6) {
+            String input = scanner.nextLine().trim();
+
+            if (input.isEmpty()) {
+                break;
+            }
+
+            try {
+                int number = Integer.parseInt(input);
+
+                if (unluckyLottoNumbers.contains(number)) {
+                    System.out.println(Messages.ALREADY_EXISTS_UNLUCKY_NUMBER);
+                } else if (number >= 1 && number <= 49) {
+                    unluckyLottoNumbers.add(number);
+                } else {
+                    System.out.println(Messages.INVALID_UNLUCKY_NUMBER);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(Messages.INVALID_UNLUCKY_NUMBER);
+            }
+        }
+        //Save the unlucky numbers in the Util class
+        UnluckyUtil.setUnluckyNumbers(unluckyLottoNumbers);
     }
 
 }
