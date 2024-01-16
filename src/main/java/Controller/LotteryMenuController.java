@@ -21,29 +21,29 @@ public class LotteryMenuController {
     private final Eurojackpot eurojackpot = new Eurojackpot();
 
     public void displayMainMenu() {
-        String numberSelection;
-        do {
+        String promptForGameMode;
+        while (true) {
             System.out.println(Messages.START_COMMAND);
-            numberSelection = input.nextLine();
-        } while (!numberSelection.isEmpty() && !numberSelection.equals("1") && !numberSelection.equals("2") && !numberSelection.equals("3"));
+            promptForGameMode = input.nextLine().trim();
 
-        switch (numberSelection) {
-            case "1":
-                playLotteryGame(lottery);
-                break;
-            case "2":
-                playLotteryGame(eurojackpot);
-                break;
-            case "3":
+            if (promptForGameMode.equalsIgnoreCase("6aus49") || promptForGameMode.isEmpty()) {
+                if (!playLotteryGame(lottery)) {
+                    break;
+                }
+            } else if (promptForGameMode.equalsIgnoreCase("Eurojackpot")) {
+                if (!playLotteryGame(eurojackpot)) {
+                    break;
+                }
+            } else if (promptForGameMode.equalsIgnoreCase("Exit")) {
                 System.out.println(Messages.END_COMMAND);
                 System.exit(0);
-                break;
-//            default:
-//                break;
+            } else {
+                System.out.println(Messages.WRONG_PROMPT);
+            }
         }
     }
 
-    private void playLotteryGame(LotteryType lotteryGame) {
+    private boolean playLotteryGame(LotteryType lotteryGame) {
         while (true) {
             System.out.println(Messages.ACTION_COMMAND);
             String selection = input.next();
@@ -54,7 +54,9 @@ public class LotteryMenuController {
                     break;
                 case "2":
                     System.out.println(Messages.END_COMMAND);
-                    return;
+                    return false;
+                case "3":
+                    return true;
                 default:
                     break;
             }
