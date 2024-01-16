@@ -2,6 +2,7 @@ package GameModes;
 
 import Interface.LotteryType;
 import Messages.Messages;
+import Utility.FileUtil;
 import Utility.UnluckyUtil;
 
 import java.util.*;
@@ -33,6 +34,9 @@ public class Lottery implements LotteryType {
 
     @Override
     public void newUnluckyNumbers() {
+
+        FileUtil.clearFile();
+
         List<Integer> unluckyLottoNumbers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -61,6 +65,8 @@ public class Lottery implements LotteryType {
         }
         //Save the unlucky numbers in the Util class
         UnluckyUtil.setUnluckyNumbers(unluckyLottoNumbers);
+
+        FileUtil.writeToFile(unluckyLottoNumbers);
     }
 
 }

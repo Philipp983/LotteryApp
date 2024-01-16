@@ -1,15 +1,17 @@
 package Utility;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UnluckyUtil {
 
-    private static List<Integer> unluckyNumbers = new ArrayList<>();
+    private static List<Integer> unluckyNumbers = FileUtil.readFromFile();
 
     private UnluckyUtil() {}
 
     public static List<Integer> getUnluckyNumbers() {
+        if (unluckyNumbers == null) {
+            unluckyNumbers = FileUtil.readFromFile();
+        }
         return unluckyNumbers;
     }
 
@@ -26,6 +28,7 @@ public class UnluckyUtil {
     }
 
     public static void clearUnluckyNumbers() {
+        FileUtil.clearFile();
         unluckyNumbers.clear();
         System.out.println("Unlucky numbers cleared.");
     }

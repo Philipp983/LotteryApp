@@ -1,11 +1,11 @@
 import Controller.LotteryMenuController;
-import GameModes.Eurojackpot;
-import GameModes.Lottery;
+import Utility.FileUtil;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        FileUtil.newFile();
         LotteryMenuController menuController = new LotteryMenuController();
         menuController.displayMainMenu();
 
