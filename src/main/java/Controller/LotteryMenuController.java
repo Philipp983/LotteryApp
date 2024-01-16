@@ -64,6 +64,9 @@ public class LotteryMenuController {
                 case "5":
                     UnluckyUtil.displayUnluckyNumbers();
                     continue;
+                case "6":
+                    UnluckyUtil.clearUnluckyNumbers();
+                    continue;
                 default:
                     break;
             }

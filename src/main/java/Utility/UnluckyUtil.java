@@ -25,4 +25,9 @@ public class UnluckyUtil {
         }
     }
 
+    public static void clearUnluckyNumbers() {
+        unluckyNumbers.clear();
+        System.out.println("Unlucky numbers cleared.");
+    }
+
 }
