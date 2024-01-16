@@ -17,4 +17,12 @@ public class UnluckyUtil {
         unluckyNumbers = newUnluckyNumbers;
     }
 
+    public static void displayUnluckyNumbers() {
+        if (unluckyNumbers != null && !unluckyNumbers.isEmpty()) {
+            System.out.println("Unlucky Numbers: " + unluckyNumbers);
+        } else {
+            System.out.println("No unlucky numbers set.");
+        }
+    }
+
 }

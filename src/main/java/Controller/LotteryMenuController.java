@@ -4,6 +4,7 @@ import GameModes.Eurojackpot;
 import GameModes.Lottery;
 import Interface.LotteryType;
 import Messages.Messages;
+import Utility.UnluckyUtil;
 
 import java.util.Scanner;
 
@@ -59,6 +60,9 @@ public class LotteryMenuController {
                     return false;
                 case "4":
                     lotteryGame.newUnluckyNumbers();
+                    continue;
+                case "5":
+                    UnluckyUtil.displayUnluckyNumbers();
                     continue;
                 default:
                     break;
