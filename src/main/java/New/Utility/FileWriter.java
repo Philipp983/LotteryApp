@@ -80,7 +80,7 @@ public class FileWriter {
         return numbers;
     }
 
-    public void delete() {
+    public static void clearFile() {
         String desktopPath = System.getProperty("user.home") + "/Desktop";
 
         String fileName = "unlucky_numbers.txt";
@@ -88,7 +88,8 @@ public class FileWriter {
 
         try {
             if (Files.exists(filePath)) {
-                Files.deleteIfExists(filePath);
+                //Files.deleteIfExists(filePath);
+                Files.write(filePath, new byte[0]);
             }
         } catch (IOException e) {
 

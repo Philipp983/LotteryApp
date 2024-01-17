@@ -58,8 +58,9 @@ public class ParameterController {
                     System.out.println(Messages.NEW_NUMBERS);
                 }
                 break;
-            case "deleteunluckynumbers":
-                deleteUnluckyNumbers();
+            case "clearunluckynumbers":
+                FileWriter.clearFile();
+                System.out.println(Messages.FILE_CLEARED);
                 break;
             case "showunluckynumbers":
                 showUnluckyNumbers();
@@ -115,9 +116,6 @@ public class ParameterController {
 
     private void setUnluckyNumbers(List<Integer> processedArgs) {
 
-    }
-
-    private void deleteUnluckyNumbers() {
     }
 
     private void showUnluckyNumbers() {

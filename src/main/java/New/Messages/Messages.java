@@ -23,5 +23,6 @@ public class Messages {
     public static final String NO_NEW_NUMBERS_PASSED = "Es müssen die neuen Unglückszahlen angegeben werden.";
 
     public static final String FILE_CREATED ="Es wurde die txt Datei erstellt.";
+    public static final String FILE_CLEARED ="Die Unglückszahlen wurden entfernt.";
     //public static final String NO_NEW_NUMBERS_PASSED ="Es wurde die txt Datei erstellt.";
 }
