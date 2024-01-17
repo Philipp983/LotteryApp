@@ -13,4 +13,6 @@ public interface LotteryInterface {
     void deleteUnluckyNumbers();
 
     void showUnluckyNumbers();
+
+    void loadUnluckyNumbers();
 }

@@ -1,6 +1,7 @@
 package New.LotteryModes;
 
 import New.AbstractClass.LotteryGame;
+import New.Messages.Messages;
 import Old.Utility.UnluckyUtil;
 
 import java.util.ArrayList;
@@ -56,5 +57,15 @@ public class Eurojackpot extends LotteryGame {
     @Override
     public void showUnluckyNumbers() {
 
+    }
+
+    @Override
+    public void loadUnluckyNumbers() {
+        for (int num : unluckyNumbers) {
+            if (num < 1 || num > 50) {
+                System.out.println(Messages.LOADED_NUMBER_OUT_OF_RANGE2);
+                System.exit(0);
+            }
+        }
     }
 }

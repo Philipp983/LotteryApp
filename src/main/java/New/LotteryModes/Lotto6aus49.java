@@ -1,6 +1,7 @@
 package New.LotteryModes;
 
 import New.AbstractClass.LotteryGame;
+import New.Messages.Messages;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,6 +13,7 @@ public class Lotto6aus49 extends LotteryGame {
 
     @Override
     public List<Integer> generateRandomNumbers(List<Integer> unluckyNumbers) {
+
 
         List<Integer> randomNumbers = new ArrayList<>();
 
@@ -44,5 +46,15 @@ public class Lotto6aus49 extends LotteryGame {
     @Override
     public void showUnluckyNumbers() {
 
+    }
+
+    @Override
+    public void loadUnluckyNumbers() {
+        for (int num : unluckyNumbers) {
+            if (num < 1 || num > 49) {
+                System.out.println(Messages.LOADED_NUMBER_OUT_OF_RANGE1);
+                System.exit(0);
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package New.Controller;
 
+import New.AbstractClass.LotteryGame;
 import New.LotteryModes.Eurojackpot;
 import New.LotteryModes.Lotto6aus49;
 import New.Messages.Messages;
@@ -15,7 +16,6 @@ public class ParameterController {
     public void processCommands(String[] args) {
 
         FileWriter fileWriter = new FileWriter();
-        fileWriter.write("1 2 3");
 
         String firstCommand = args.length > 0 ? args[0] : "6aus49";
 
@@ -23,6 +23,24 @@ public class ParameterController {
              || args[0].equals("setunluckynumbers")) && args.length > 1) {
             extractedUnluckyNumbers(args);
             fileWriter.write(processedArgs.toString());
+
+        } else if ((args[0].equals("6aus49") || args[0].equals("Eurojackpot"))
+                   && args.length == 1) {
+
+            LotteryGame lotteryGame;
+            switch (args[0]) {
+                case "6aus49":
+                    lotteryGame = new Lotto6aus49();
+                    break;
+                case "Eurojackpot":
+                    lotteryGame = new Eurojackpot();
+                    break;
+                default:
+                    return;
+            }
+            lotteryGame.loadUnluckyNumbers();
+            //lotteryGame.printUnluckyNumbers();
+
         }
 
         switch (firstCommand) {
@@ -33,7 +51,11 @@ public class ParameterController {
                 processEurojackpot(processedArgs);
                 break;
             case "setunluckynumbers":
-                setUnluckyNumbers(processedArgs);
+                if (args.length == 1) {
+                    System.out.println(Messages.NO_NEW_NUMBERS_PASSED);
+                } else {
+                    System.out.println(Messages.NEW_NUMBERS);
+                }
                 break;
             case "deleteunluckynumbers":
                 deleteUnluckyNumbers();
@@ -91,6 +113,7 @@ public class ParameterController {
     }
 
     private void setUnluckyNumbers(List<Integer> processedArgs) {
+
     }
 
     private void deleteUnluckyNumbers() {
