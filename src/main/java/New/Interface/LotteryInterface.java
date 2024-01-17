@@ -8,7 +8,6 @@ public interface LotteryInterface {
 
     void newUnluckyNumbers();
 
-    void setUnluckyNumbers(List<Integer> unluckyNumbers);
 
     void deleteUnluckyNumbers();
 
