@@ -5,9 +5,9 @@ import New.LotteryModes.Lotto6aus49;
 public class ParameterController {
 
     public void processCommands(String[] args) {
-        String lotteryType = args.length > 0 ? args[0] : "6aus49";
+        String firstCommand = args.length > 0 ? args[0] : "6aus49";
 
-        switch (lotteryType) {
+        switch (firstCommand) {
             case "6aus49":
                 process6aus49(args);
                 break;
@@ -23,6 +23,9 @@ public class ParameterController {
             case "showunluckynumbers":
                 showUnluckyNumbers();
                 break;
+//            case "showcommands":
+//                showListOfCommands();
+//                break;
             default:
                 System.out.println("Invalid lottery type. Please use either '6aus49' or 'Eurojackpot'.");
                 break;
@@ -31,7 +34,7 @@ public class ParameterController {
 
     private void process6aus49(String[] args) {
         Lotto6aus49 lotto = new Lotto6aus49();
-        System.out.println(lotto.generateRandomNumbers());
+        System.out.println(lotto.generateRandomNumbers(args));
     }
 
     private void processEurojackpot(String[] args) {

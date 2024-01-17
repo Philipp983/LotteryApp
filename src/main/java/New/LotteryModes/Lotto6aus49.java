@@ -1,7 +1,6 @@
 package New.LotteryModes;
 
 import New.AbstractClass.LotteryGame;
-import Old.Utility.UnluckyUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,9 +11,21 @@ public class Lotto6aus49 extends LotteryGame {
 
 
     @Override
-    public List<Integer> generateRandomNumbers() {
+    public List<Integer> generateRandomNumbers(String[] args) {
 
         List<Integer> randomNumbers = new ArrayList<>();
+
+        if (args.length > 1) {
+            for (int i = 1; i < args.length; i++) {
+                try {
+                    unluckyNumbers.add(Integer.parseInt(args[i]));
+                } catch (NumberFormatException e) {
+                    System.err.println("Es müssen Zahlen eingegeben werden statt: " + args[i]);
+                }
+            }
+
+        }
+
         Random random = new Random();
         int randomNumber;
 
@@ -23,7 +34,7 @@ public class Lotto6aus49 extends LotteryGame {
             randomNumber = random.nextInt(49) + 1;
 
             if (!randomNumbers.contains(randomNumber)
-                    && (!UnluckyUtil.getUnluckyNumbers().contains(randomNumber))) { //Compare the random numbers to the numbers from the Util class
+                    && (!unluckyNumbers.contains(randomNumber))) { //Compare the random numbers to the numbers from the Util class
                 randomNumbers.add(randomNumber);
             }
         }
