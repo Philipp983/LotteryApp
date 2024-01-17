@@ -1,14 +1,14 @@
 package New.Controller;
 
+import New.LotteryModes.Eurojackpot;
 import New.LotteryModes.Lotto6aus49;
 import New.Messages.Messages;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParameterController {
 
-    private List<Integer> processedArgs = new ArrayList<>();
+    private final List<Integer> processedArgs = new ArrayList<>();
 
     public void processCommands(String[] args) {
 
@@ -24,10 +24,10 @@ public class ParameterController {
                 process6aus49(processedArgs);
                 break;
             case "Eurojackpot":
-                processEurojackpot(args);
+                processEurojackpot(processedArgs);
                 break;
             case "setunluckynumbers":
-                setUnluckyNumbers(args);
+                setUnluckyNumbers(processedArgs);
                 break;
             case "deleteunluckynumbers":
                 deleteUnluckyNumbers();
@@ -63,12 +63,10 @@ public class ParameterController {
                 } else if (args[0].equals("setunluckynumbers") && number >= 1 && number <= 50) {
                     processedArgs.add(number);
                 } else {
-                    if (args[0].equals("6aus49")) {
-                        System.out.println(Messages.NUMBER_OUT_OF_RANGE1);
-                    } else if (args[0].equals("Eurojackpot")) {
-                        System.out.println(Messages.NUMBER_OUT_OF_RANGE2);
-                    } else if (args[0].equals("setunluckynumbers")) {
-                        System.out.println(Messages.NUMBER_OUT_OF_RANGE3);
+                    switch (args[0]) {
+                        case "6aus49" -> System.out.println(Messages.NUMBER_OUT_OF_RANGE1);
+                        case "Eurojackpot" -> System.out.println(Messages.NUMBER_OUT_OF_RANGE2);
+                        case "setunluckynumbers" -> System.out.println(Messages.NUMBER_OUT_OF_RANGE3);
                     }
                     System.exit(0);
                 }
@@ -81,10 +79,12 @@ public class ParameterController {
         System.out.println(lotto.generateRandomNumbers(processedArgs));
     }
 
-    private void processEurojackpot(String[] args) {
+    private void processEurojackpot(List<Integer> processedArgs) {
+        Eurojackpot eurojackpot = new Eurojackpot();
+        System.out.println(eurojackpot.generateRandomNumbers(processedArgs));
     }
 
-    private void setUnluckyNumbers(String[] args) {
+    private void setUnluckyNumbers(List<Integer> processedArgs) {
     }
 
     private void deleteUnluckyNumbers() {

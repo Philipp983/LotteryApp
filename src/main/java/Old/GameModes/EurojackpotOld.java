@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * The EurojackpotLottery class for playing Eurojackpot. Currently only implements generating random numbers.
  */
-public class Eurojackpot implements LotteryType {
+public class EurojackpotOld implements LotteryType {
 
     @Override
     public List<Integer> generateRandomNumbers() {
@@ -41,6 +41,8 @@ public class Eurojackpot implements LotteryType {
 
         return combinedNumbers;
     }
+
+
 
     @Override
     public void newUnluckyNumbers() {

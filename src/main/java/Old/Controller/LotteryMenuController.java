@@ -1,6 +1,6 @@
 package Old.Controller;
 
-import Old.GameModes.Eurojackpot;
+import Old.GameModes.EurojackpotOld;
 import Old.GameModes.Lottery;
 import Old.Interface.LotteryType;
 import Old.Messages.Messages;
@@ -19,7 +19,7 @@ public class LotteryMenuController {
 
     private final Scanner input = new Scanner(System.in);
     private final Lottery lottery = new Lottery();
-    private final Eurojackpot eurojackpot = new Eurojackpot();
+    private final EurojackpotOld eurojackpotOld = new EurojackpotOld();
 
     public void displayMainMenu() {
         String promptForGameMode;
@@ -32,7 +32,7 @@ public class LotteryMenuController {
                     break;
                 }
             } else if (promptForGameMode.equalsIgnoreCase("Eurojackpot")) {
-                if (playLotteryGame(eurojackpot)) {
+                if (playLotteryGame(eurojackpotOld)) {
                     break;
                 }
             } else if (promptForGameMode.equalsIgnoreCase("Exit")) {
