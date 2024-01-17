@@ -5,6 +5,7 @@ import New.LotteryModes.Eurojackpot;
 import New.LotteryModes.Lotto6aus49;
 import New.Messages.Messages;
 import New.Utility.FileWriter;
+import New.Utility.UnlimitedLottoGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,9 +66,25 @@ public class ParameterController {
             case "showunluckynumbers":
                 showUnluckyNumbers();
                 break;
+            case "unlimitedlotto":
+                unlimitedLotto(args);
             default:
-                System.out.println(Messages.COMMAND_LIST);
+                System.err.println("\nEingabe: " + firstCommand + " wurde nicht erkannt.");
+                System.err.println(Messages.COMMAND_LIST);
                 break;
+        }
+    }
+
+    private void unlimitedLotto(String[] args) {
+        if (args.length > 2) {
+            extractedUnluckyNumbers(args);
+        }
+
+        try {
+            UnlimitedLottoGenerator generator = new UnlimitedLottoGenerator(args[1], processedArgs);
+            generator.startGenerating();
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
         }
     }
 
@@ -130,4 +147,5 @@ public class ParameterController {
         }
     }
 }
+
 
