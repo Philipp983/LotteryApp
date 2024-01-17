@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ParameterController {
 
-    private final List<Integer> processedArgs = new ArrayList<>();
+    private List<Integer> processedArgs = new ArrayList<>();
 
     public void processCommands(String[] args) {
 
@@ -39,6 +39,7 @@ public class ParameterController {
                     return;
             }
             lotteryGame.loadUnluckyNumbers();
+            processedArgs = lotteryGame.getUnluckyNumbers();
             //lotteryGame.printUnluckyNumbers();
 
         }
