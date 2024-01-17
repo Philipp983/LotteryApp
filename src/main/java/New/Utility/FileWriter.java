@@ -1,6 +1,8 @@
 package New.Utility;
 
 
+import New.Messages.Messages;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,16 +53,25 @@ public class FileWriter {
         List<Integer> numbers = new ArrayList<>();
 
         try {
+            if (!Files.exists(filePath)) {
+                Files.createDirectories(filePath.getParent());
+                Files.createFile(filePath);
+                //System.out.println(Messages.FILE_CREATED);
+            }
             String fileContent = new String(Files.readAllBytes(filePath));
-            // Remove square brackets and split on commas
-            fileContent = fileContent.replaceAll("[\\[\\]]", "").trim();
-            String[] numberStrings = fileContent.split(",");
 
-            for (String numberStr : numberStrings) {
-                try {
-                    numbers.add(Integer.parseInt(numberStr.trim()));
-                } catch (NumberFormatException e) {
-                    System.err.println("Invalid number format: " + numberStr);
+            // Check if file content is not empty
+            if (!fileContent.isEmpty()) {
+                // Remove square brackets and split on commas
+                fileContent = fileContent.replaceAll("[\\[\\]]", "").trim();
+                String[] numberStrings = fileContent.split(",");
+
+                for (String numberStr : numberStrings) {
+                    try {
+                        numbers.add(Integer.parseInt(numberStr.trim()));
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid number format: " + numberStr);
+                    }
                 }
             }
         } catch (IOException e) {

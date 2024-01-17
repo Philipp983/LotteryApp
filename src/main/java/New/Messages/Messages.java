@@ -21,4 +21,7 @@ public class Messages {
     public static final String LOADED_NUMBER_OUT_OF_RANGE1 = "Eine noch gespeichtere Unglückszahl ist nicht im Bereich von 1 bis 49, bitte korrigieren.";
     public static final String LOADED_NUMBER_OUT_OF_RANGE2 = "Eine noch gespeichtere Unglückszahl ist nicht im Bereich von 1 bis 50, bitte korrigieren.";
     public static final String NO_NEW_NUMBERS_PASSED = "Es müssen die neuen Unglückszahlen angegeben werden.";
+
+    public static final String FILE_CREATED ="Es wurde die txt Datei erstellt.";
+    //public static final String NO_NEW_NUMBERS_PASSED ="Es wurde die txt Datei erstellt.";
 }
