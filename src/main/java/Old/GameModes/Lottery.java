@@ -1,9 +1,9 @@
-package GameModes;
+package Old.GameModes;
 
-import Interface.LotteryType;
-import Messages.Messages;
-import Utility.FileUtil;
-import Utility.UnluckyUtil;
+import Old.Interface.LotteryType;
+import Old.Messages.Messages;
+import Old.Utility.FileUtil;
+import Old.Utility.UnluckyUtil;
 
 import java.util.*;
 

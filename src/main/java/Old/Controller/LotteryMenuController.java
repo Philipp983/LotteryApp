@@ -1,10 +1,10 @@
-package Controller;
+package Old.Controller;
 
-import GameModes.Eurojackpot;
-import GameModes.Lottery;
-import Interface.LotteryType;
-import Messages.Messages;
-import Utility.UnluckyUtil;
+import Old.GameModes.Eurojackpot;
+import Old.GameModes.Lottery;
+import Old.Interface.LotteryType;
+import Old.Messages.Messages;
+import Old.Utility.UnluckyUtil;
 
 import java.util.Scanner;
 

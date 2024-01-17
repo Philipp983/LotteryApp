@@ -1,13 +1,14 @@
-import Controller.LotteryMenuController;
-import Utility.FileUtil;
+import New.Controller.ParameterController;
+import Old.Utility.FileUtil;
 
 public class Main {
 
     public static void main(String[] args) {
 
         FileUtil.newFile();
-        LotteryMenuController menuController = new LotteryMenuController();
-        menuController.displayMainMenu();
+
+        ParameterController controller = new ParameterController();
+        controller.processCommands(args);
 
     }
 }
