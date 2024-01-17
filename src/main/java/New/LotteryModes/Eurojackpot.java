@@ -2,7 +2,6 @@ package New.LotteryModes;
 
 import New.AbstractClass.LotteryGame;
 import New.Messages.Messages;
-import Old.Utility.UnluckyUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +19,7 @@ public class Eurojackpot extends LotteryGame {
         while (randomNumbers.size() < 5) {
             int number = random.nextInt(50) + 1;
             if (!randomNumbers.contains(number)
-                && (!UnluckyUtil.getUnluckyNumbers().contains(number))) {
+                && (!unluckyNumbers.contains(number))) {
                 randomNumbers.add(number);
             }
         }
@@ -29,7 +28,7 @@ public class Eurojackpot extends LotteryGame {
         while (euroNumbers.size() < 2) {
             int euroNumber = random.nextInt(12) + 1;
             if (!euroNumbers.contains(euroNumber)
-                && (!UnluckyUtil.getUnluckyNumbers().contains(euroNumber))) {
+                && (!unluckyNumbers.contains(euroNumber))) {
                 euroNumbers.add(euroNumber);
             }
         }
