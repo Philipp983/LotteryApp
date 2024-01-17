@@ -1,5 +1,7 @@
 package New.Controller;
 
+import New.LotteryModes.Lotto6aus49;
+
 public class ParameterController {
 
     public void processCommands(String[] args) {
@@ -28,7 +30,8 @@ public class ParameterController {
     }
 
     private void process6aus49(String[] args) {
-
+        Lotto6aus49 lotto = new Lotto6aus49();
+        System.out.println(lotto.generateRandomNumbers());
     }
 
     private void processEurojackpot(String[] args) {
