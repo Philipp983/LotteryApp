@@ -11,20 +11,9 @@ public class Lotto6aus49 extends LotteryGame {
 
 
     @Override
-    public List<Integer> generateRandomNumbers(String[] args) {
+    public List<Integer> generateRandomNumbers(List<Integer> unluckyNumbers) {
 
         List<Integer> randomNumbers = new ArrayList<>();
-
-        if (args.length > 1) {
-            for (int i = 1; i < args.length; i++) {
-                try {
-                    unluckyNumbers.add(Integer.parseInt(args[i]));
-                } catch (NumberFormatException e) {
-                    System.err.println("Es müssen Zahlen eingegeben werden statt: " + args[i]);
-                }
-            }
-
-        }
 
         Random random = new Random();
         int randomNumber;

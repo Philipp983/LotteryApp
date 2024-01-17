@@ -2,8 +2,8 @@ package Old.Messages;
 
 public class Messages {
 
-    private Messages() {
-    }
+
+
 
     public static final String START_COMMAND = "Please choose the game: Please type '6aus49' or 'Eurojackpot' to choose a game mode, or 'Exit' to close the program.\" \n";
     public static final String END_COMMAND = "Thanks for playing! See you soon!";

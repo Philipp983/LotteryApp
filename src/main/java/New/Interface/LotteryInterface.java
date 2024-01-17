@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface LotteryInterface {
 
-    List<Integer> generateRandomNumbers(String[] args);
+    List<Integer> generateRandomNumbers(List<Integer> unluckyNumbers);
 
     void newUnluckyNumbers();
 
