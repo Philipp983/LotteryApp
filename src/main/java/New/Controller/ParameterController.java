@@ -170,17 +170,40 @@ public class ParameterController {
 
     private void process6aus49(List<Integer> processedArgs) {
         Lotto6aus49 lotto = new Lotto6aus49();
-        System.out.println(lotto.generateRandomNumbers(processedArgs));
+        List<Integer> randomNumbers = lotto.generateRandomNumbers(processedArgs);
+
+        modify6aus49Output(randomNumbers);
+    }
+
+    public static void modify6aus49Output(List<Integer> randomNumbers) {
+        // Formatting the output
+        System.out.println("\n6aus49 Tippzahlen: " + randomNumbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ")));
     }
 
     private void processEurojackpot(List<Integer> processedArgs) {
         Eurojackpot eurojackpot = new Eurojackpot();
-        System.out.println(eurojackpot.generateRandomNumbers(processedArgs));
+        List<Integer> randomNumbers = eurojackpot.generateRandomNumbers(processedArgs);
+
+        // Assuming the first 5 numbers are from 5aus50 and the last 2 are from 2aus12
+        modifyEurojackpotOutput(randomNumbers);
     }
 
-    private void setUnluckyNumbers(List<Integer> processedArgs) {
+    public static void modifyEurojackpotOutput(List<Integer> randomNumbers) {
+        List<Integer> numbers5aus50 = randomNumbers.subList(0, 5);
+        List<Integer> numbers2aus12 = randomNumbers.subList(5, 7);
 
+        // Formatting the output
+        System.out.println("\nEurojackpot 5aus50: " + numbers5aus50.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ")));
+
+        System.out.println("2aus12: " + numbers2aus12.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ")));
     }
+
 
     private void showUnluckyNumbers() {
         List<Integer> numbers = FileWriter.read2();
