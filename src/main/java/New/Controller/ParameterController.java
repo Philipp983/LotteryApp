@@ -19,13 +19,12 @@ public class ParameterController {
 
         String firstCommand = args.length > 0 ? args[0] : "6aus49";
 
-        if ((args[0].equals("6aus49") || args[0].equals("Eurojackpot")
+        if (args.length > 0 && (args[0].equals("6aus49") || args[0].equals("Eurojackpot")
              || args[0].equals("setunluckynumbers")) && args.length > 1) {
             extractedUnluckyNumbers(args);
             fileWriter.write(processedArgs.toString());
 
-        } else if ((args[0].equals("6aus49") || args[0].equals("Eurojackpot"))
-                   && args.length == 1) {
+        } else if (args.length > 0 && (args[0].equals("6aus49") || args[0].equals("Eurojackpot"))) {
 
             LotteryGame lotteryGame;
             switch (args[0]) {
