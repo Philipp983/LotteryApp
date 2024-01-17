@@ -5,18 +5,24 @@ import New.LotteryModes.Eurojackpot;
 import New.LotteryModes.Lotto6aus49;
 import New.Messages.Messages;
 import New.Utility.FileWriter;
+import New.Utility.LogFiles;
 import New.Utility.LotteryTicketOutputFormatter;
 import New.Utility.UnlimitedLottoGenerator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ParameterController {
 
     private List<Integer> processedArgs = new ArrayList<>();
+    private LogFiles logFiles = new LogFiles();
 
     public void processCommands(String[] args) {
+
+        logFiles.addToLogs("Start of application");
+        logFiles.addToLogs("Passed arguments: " + String.join(" ", args));
 
 
         String firstCommand = args.length > 0 ? args[0] : "6aus49";
@@ -48,6 +54,7 @@ public class ParameterController {
         switch (firstCommand) {
             case "6aus49":
                 process6aus49(processedArgs);
+                logFiles.write();
                 break;
             case "Eurojackpot":
                 processEurojackpot(processedArgs);
