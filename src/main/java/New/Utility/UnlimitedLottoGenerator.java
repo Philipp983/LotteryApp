@@ -61,5 +61,6 @@ public class UnlimitedLottoGenerator implements Runnable {
     public void stopGenerating() {
         running = false;
         System.out.println(Messages.CLOSING);
+        System.exit(0);
     }
 }

@@ -1,7 +1,6 @@
 package New.Utility;
 
 
-import New.Messages.Messages;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,7 +11,7 @@ import java.util.List;
 
 public class FileWriter {
 
-    public void write(String numbers) {
+    public static void write(String numbers) {
         String desktopPath = System.getProperty("user.home") + "/Desktop";
 
         String fileName = "unlucky_numbers.txt";
