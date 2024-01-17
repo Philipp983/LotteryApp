@@ -21,4 +21,5 @@ public abstract class LotteryGame implements LotteryInterface {
         System.out.println(unluckyNumbers);
     }
 
+
 }

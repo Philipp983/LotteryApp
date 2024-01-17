@@ -8,6 +8,7 @@ import New.Utility.FileWriter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ParameterController {
 
@@ -118,6 +119,15 @@ public class ParameterController {
     }
 
     private void showUnluckyNumbers() {
+        List<Integer> numbers = FileWriter.read2();
+        if (numbers.isEmpty()) {
+            System.out.println(Messages.NO_CURRENT_NUMBERS);
+        } else {
+            String joinedNumbers = numbers.stream()
+                    .map(Object::toString)
+                    .collect(Collectors.joining(", "));
+            System.out.println(Messages.CURRENT_NUMBERS + joinedNumbers);
+        }
     }
 }
 
