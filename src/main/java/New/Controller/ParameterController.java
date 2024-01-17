@@ -5,6 +5,7 @@ import New.LotteryModes.Eurojackpot;
 import New.LotteryModes.Lotto6aus49;
 import New.Messages.Messages;
 import New.Utility.FileWriter;
+import New.Utility.LotteryTicketOutputFormatter;
 import New.Utility.UnlimitedLottoGenerator;
 
 import java.util.ArrayList;
@@ -172,14 +173,7 @@ public class ParameterController {
         Lotto6aus49 lotto = new Lotto6aus49();
         List<Integer> randomNumbers = lotto.generateRandomNumbers(processedArgs);
 
-        modify6aus49Output(randomNumbers);
-    }
-
-    public static void modify6aus49Output(List<Integer> randomNumbers) {
-        // Formatting the output
-        System.out.println("\n6aus49 Tippzahlen: " + randomNumbers.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(", ")));
+        LotteryTicketOutputFormatter.modify6aus49Output(randomNumbers);
     }
 
     private void processEurojackpot(List<Integer> processedArgs) {
@@ -187,23 +181,8 @@ public class ParameterController {
         List<Integer> randomNumbers = eurojackpot.generateRandomNumbers(processedArgs);
 
         // Assuming the first 5 numbers are from 5aus50 and the last 2 are from 2aus12
-        modifyEurojackpotOutput(randomNumbers);
+        LotteryTicketOutputFormatter.modifyEurojackpotOutput(randomNumbers);
     }
-
-    public static void modifyEurojackpotOutput(List<Integer> randomNumbers) {
-        List<Integer> numbers5aus50 = randomNumbers.subList(0, 5);
-        List<Integer> numbers2aus12 = randomNumbers.subList(5, 7);
-
-        // Formatting the output
-        System.out.println("\nEurojackpot 5aus50: " + numbers5aus50.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(", ")));
-
-        System.out.println("2aus12: " + numbers2aus12.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(", ")));
-    }
-
 
     private void showUnluckyNumbers() {
         List<Integer> numbers = FileWriter.read2();

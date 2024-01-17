@@ -37,10 +37,10 @@ public class UnlimitedLottoGenerator implements Runnable {
             // Determine the type of lottery game and call the respective formatting method
             if (lotteryGame instanceof Lotto6aus49) {
                 System.out.print("Tippschein Nummer " + index + ": ");
-                ParameterController.modify6aus49Output(numbers);  // Assuming UtilityClass is the class containing the static methods
+                LotteryTicketOutputFormatter.modify6aus49Output(numbers);  // Assuming UtilityClass is the class containing the static methods
             } else if (lotteryGame instanceof Eurojackpot) {
                 System.out.print("Tippschein Nummer " + index + ": ");
-                ParameterController.modifyEurojackpotOutput(numbers);
+                LotteryTicketOutputFormatter.modifyEurojackpotOutput(numbers);
             }
 
             index++;
