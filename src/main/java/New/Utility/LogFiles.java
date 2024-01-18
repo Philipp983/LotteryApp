@@ -23,6 +23,7 @@ public class LogFiles {
 
         try {
             if (Files.exists(filePath)) {
+
                 Files.deleteIfExists(filePath);
             }
             Files.createDirectories(filePath.getParent());

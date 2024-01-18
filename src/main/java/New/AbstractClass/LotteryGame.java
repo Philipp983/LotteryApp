@@ -6,7 +6,7 @@ import New.Utility.FileWriter;
 import java.util.List;
 
 public abstract class LotteryGame implements LotteryInterface {
-    protected List<Integer> unluckyNumbers = FileWriter.read2();
+    protected List<Integer> unluckyNumbers = FileWriter.read();
 
     public List<Integer> getUnluckyNumbers() {
         return unluckyNumbers;

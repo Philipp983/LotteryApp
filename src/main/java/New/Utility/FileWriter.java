@@ -11,6 +11,7 @@ import java.util.List;
 
 public class FileWriter {
 
+
     public static void write(String numbers) {
         String desktopPath = System.getProperty("user.home") + "/Desktop";
 
@@ -30,22 +31,8 @@ public class FileWriter {
         }
     }
 
-//    public static String read() {
-//        String desktopPath = System.getProperty("user.home") + "/Desktop";
-//
-//        String fileName = "unlucky_numbers.txt";
-//        Path filePath = Paths.get(desktopPath,fileName);
-//
-//        try {
-//            byte[] fileContent = Files.readAllBytes(filePath);
-//            return new String(fileContent);
-//
-//        } catch (IOException e) {
-//            return "";
-//        }
-//    }
 
-    public static List<Integer> read2() {
+    public static List<Integer> read() {
         String desktopPath = System.getProperty("user.home") + "/Desktop";
         String fileName = "unlucky_numbers.txt";
         Path filePath = Paths.get(desktopPath, fileName);
