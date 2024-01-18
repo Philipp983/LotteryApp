@@ -64,6 +64,6 @@ public class Eurojackpot extends LotteryGame {
 
     @Override
     public void setUnluckyNumbers(List<Integer> unluckyNumbers) {
-
+        super.setUnluckyNumbers(unluckyNumbers);
     }
 }
