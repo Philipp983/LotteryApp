@@ -2,6 +2,7 @@ package New.LotteryModes;
 
 import New.AbstractClass.LotteryGame;
 import New.Messages.Messages;
+import New.Utility.LogFiles;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,12 +35,16 @@ public class Eurojackpot extends LotteryGame {
         }
 
         Collections.sort(randomNumbers);
+        LogFiles.getInstance().addToLogs(randomNumbers + " are the generated and sorted 5aus50 numbers");
         Collections.sort(euroNumbers);
+        LogFiles.getInstance().addToLogs(euroNumbers + " are the generated and sorted 2aus12 numbers");
 
         // Combine main numbers and Euro numbers into one list
         List<Integer> combinedNumbers = new ArrayList<>(randomNumbers);
         combinedNumbers.addAll(euroNumbers);
 
+
+        LogFiles.getInstance().addToLogs("Returning random numbers");
         return combinedNumbers;
     }
 

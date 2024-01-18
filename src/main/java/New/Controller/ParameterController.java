@@ -62,7 +62,10 @@ public class ParameterController {
                 LogFiles.getInstance().write();
                 break;
             case "Eurojackpot":
+                LogFiles.getInstance().addToLogs("Passing unlucky numbers to Eurojackpot");
                 processEurojackpot(processedArgs);
+                LogFiles.getInstance().addToLogs("End of application");
+                LogFiles.getInstance().write();
                 break;
             case "setunluckynumbers":
                 if (args.length == 1) {
