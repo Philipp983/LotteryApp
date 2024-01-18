@@ -19,7 +19,7 @@ class EurojackpotTest {
 
     @Test
     void generateRandomNumbers_StandardConditions_ReturnsSevenNumbers() {
-        List<Integer> unluckyNumbers = Arrays.asList(1, 2, 3, 4, 5); // Example unlucky numbers
+        List<Integer> unluckyNumbers = Arrays.asList(1, 2, 3, 4, 5);
         List<Integer> randomNumbers = eurojackpot.generateRandomNumbers(unluckyNumbers);
 
         assertEquals(7, randomNumbers.size());
@@ -29,7 +29,7 @@ class EurojackpotTest {
 
     @Test
     void loadUnluckyNumbers_OutOfRangeNumbers_ThrowsException() {
-        List<Integer> outOfRangeNumbers = Arrays.asList(51, 52, 53); // Example out of range numbers
+        List<Integer> outOfRangeNumbers = Arrays.asList(51, 52, 53);
         eurojackpot.setUnluckyNumbers(outOfRangeNumbers);
 
         Exception exception = assertThrows(IllegalArgumentException.class, eurojackpot::loadUnluckyNumbers);
