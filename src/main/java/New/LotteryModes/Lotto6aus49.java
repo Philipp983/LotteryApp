@@ -13,7 +13,6 @@ public class Lotto6aus49 extends LotteryGame {
     @Override
     public List<Integer> generateRandomNumbers(List<Integer> unluckyNumbers) {
 
-
         List<Integer> randomNumbers = new ArrayList<>();
 
         Random random = new Random();
@@ -36,21 +35,6 @@ public class Lotto6aus49 extends LotteryGame {
     }
 
     @Override
-    public void newUnluckyNumbers() {
-
-    }
-
-    @Override
-    public void deleteUnluckyNumbers() {
-
-    }
-
-    @Override
-    public void showUnluckyNumbers() {
-
-    }
-
-    @Override
     public void loadUnluckyNumbers() {
         for (int num : unluckyNumbers) {
             if (num < 1 || num > 49) {
@@ -58,8 +42,15 @@ public class Lotto6aus49 extends LotteryGame {
                 LogFiles.getInstance().addToLogs(Messages.LOADED_NUMBER_OUT_OF_RANGE1);
                 LogFiles.getInstance().addToLogs("End of application");
                 LogFiles.getInstance().write();
-                System.exit(0);
+                throw new IllegalArgumentException(Messages.LOADED_NUMBER_OUT_OF_RANGE1);
             }
         }
     }
+
+
+    public void setUnluckyNumbers(List<Integer> unluckyNumbers) {
+        super.setUnluckyNumbers(unluckyNumbers);
+    }
+
+
 }

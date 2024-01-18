@@ -15,5 +15,9 @@ public abstract class LotteryGame implements LotteryInterface {
     public void loadUnluckyNumbers() {
     }
 
+    public void setUnluckyNumbers(List<Integer> unluckyNumbers) {
+        this.unluckyNumbers = unluckyNumbers;
+    }
+
 
 }

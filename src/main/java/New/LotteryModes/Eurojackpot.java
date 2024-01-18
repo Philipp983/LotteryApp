@@ -48,20 +48,6 @@ public class Eurojackpot extends LotteryGame {
         return combinedNumbers;
     }
 
-    @Override
-    public void newUnluckyNumbers() {
-
-    }
-
-    @Override
-    public void deleteUnluckyNumbers() {
-
-    }
-
-    @Override
-    public void showUnluckyNumbers() {
-
-    }
 
     @Override
     public void loadUnluckyNumbers() {
@@ -74,5 +60,10 @@ public class Eurojackpot extends LotteryGame {
                 System.exit(0);
             }
         }
+    }
+
+    @Override
+    public void setUnluckyNumbers(List<Integer> unluckyNumbers) {
+
     }
 }
