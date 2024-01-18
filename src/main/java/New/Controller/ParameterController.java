@@ -16,23 +16,23 @@ import java.util.stream.Collectors;
 public class ParameterController {
 
     private List<Integer> processedArgs = new ArrayList<>();
-    private LogFiles logFiles = new LogFiles();
+    //private LogFiles logFiles = new LogFiles();
 
     public void processCommands(String[] args) {
 
-        logFiles.addToLogs("Start of application");
-        logFiles.addToLogs("Passed arguments: " + String.join(" ", args));
+        LogFiles.getInstance().addToLogs("Start of application");
+        LogFiles.getInstance().addToLogs("Passed arguments: " + String.join(" ", args));
 
 
         String firstCommand = args.length > 0 ? args[0] : "6aus49";
 
         if (args.length > 0 && (args[0].equals("6aus49") || args[0].equals("Eurojackpot")
              || args[0].equals("setunluckynumbers")) && args.length > 1) {
-            logFiles.addToLogs("Separating numbers");
+            LogFiles.getInstance().addToLogs("Separating numbers");
             extractedUnluckyNumbers(args);
 
             FileWriter.write(processedArgs.toString());
-            logFiles.addToLogs("Saved unlucky numbers to unlucky-numbers.txt");
+            LogFiles.getInstance().addToLogs("Saved unlucky numbers to unlucky-numbers.txt");
 
 
         } else if (args.length > 0 && (args[0].equals("6aus49") || args[0].equals("Eurojackpot"))) {
@@ -56,8 +56,10 @@ public class ParameterController {
 
         switch (firstCommand) {
             case "6aus49":
+                LogFiles.getInstance().addToLogs("Passing unlucky numbers to 6aus49");
                 process6aus49(processedArgs);
-                logFiles.write();
+                LogFiles.getInstance().addToLogs("End of application");
+                LogFiles.getInstance().write();
                 break;
             case "Eurojackpot":
                 processEurojackpot(processedArgs);
@@ -72,7 +74,7 @@ public class ParameterController {
             case "clearunluckynumbers":
                 FileWriter.clearFile();
 
-                logFiles.addToLogs("unlucky-numbers.txt was cleared");
+                LogFiles.getInstance().addToLogs("unlucky-numbers.txt was cleared");
 
                 System.out.println(Messages.FILE_CLEARED);
                 break;
@@ -152,6 +154,9 @@ public class ParameterController {
     private void extractedUnluckyNumbers(String[] args) {
         if (args.length > 7) {
             System.out.println(Messages.TOO_MANY_NUMBERS);
+            LogFiles.getInstance().addToLogs("Too many arguments passed, only up to 6 numbers allowed.");
+            LogFiles.getInstance().addToLogs("End of application");
+            LogFiles.getInstance().write();
             System.exit(0);
         } else {
             for (int i = 1; i < args.length; i++) {
@@ -160,8 +165,9 @@ public class ParameterController {
                     number = Integer.parseInt(args[i]);
                 } catch (NumberFormatException e) {
                     System.err.println(Messages.WRONG_FORMAT);
-                    logFiles.addToLogs("Separating number failed: " + e + ". Wrong format passed");
-                    logFiles.write();
+                    LogFiles.getInstance().addToLogs("Separating number failed: " + e + ". Wrong format passed");
+                    LogFiles.getInstance().addToLogs("End of application");
+                    LogFiles.getInstance().write();
                     System.exit(0);
                     return;
                 }
@@ -176,21 +182,21 @@ public class ParameterController {
                     switch (args[0]) {
                         case "6aus49" -> {
                             System.out.println(Messages.NUMBER_OUT_OF_RANGE1);
-                            logFiles.addToLogs("Separating numbers failed: Number out of range");
+                            LogFiles.getInstance().addToLogs("Separating numbers failed: Number out of range");
                         }
                         case "Eurojackpot" -> {
                             System.out.println(Messages.NUMBER_OUT_OF_RANGE2);
-                            logFiles.addToLogs("Separating numbers failed: Number out of range");
+                            LogFiles.getInstance().addToLogs("Separating numbers failed: Number out of range");
                         }
                         case "setunluckynumbers" -> {
                             System.out.println(Messages.NUMBER_OUT_OF_RANGE3);
-                            logFiles.addToLogs("Separating numbers failed: Number out of range");
+                            LogFiles.getInstance().addToLogs("Separating numbers failed: Number out of range");
                         }
                     }
                     System.exit(0);
                 }
 
-                logFiles.addToLogs("Separating number " + number + " successfull");
+                LogFiles.getInstance().addToLogs("Separating number " + number + " successfull");
             }
         }
     }
@@ -206,7 +212,6 @@ public class ParameterController {
         Eurojackpot eurojackpot = new Eurojackpot();
         List<Integer> randomNumbers = eurojackpot.generateRandomNumbers(processedArgs);
 
-        // Assuming the first 5 numbers are from 5aus50 and the last 2 are from 2aus12
         LotteryTicketOutputFormatter.modifyEurojackpotOutput(randomNumbers);
     }
 

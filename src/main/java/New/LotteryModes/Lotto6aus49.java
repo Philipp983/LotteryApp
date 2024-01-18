@@ -2,6 +2,7 @@ package New.LotteryModes;
 
 import New.AbstractClass.LotteryGame;
 import New.Messages.Messages;
+import New.Utility.LogFiles;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,6 +10,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Lotto6aus49 extends LotteryGame {
+
+    //private static LogFiles logFiles = new LogFiles();
 
 
     @Override
@@ -30,6 +33,9 @@ public class Lotto6aus49 extends LotteryGame {
             }
         }
         Collections.sort(randomNumbers);
+        LogFiles.getInstance().addToLogs(randomNumbers + " are the generated and sorted lottery numbers");
+        LogFiles.getInstance().addToLogs("Returning random numbers");
+
         return randomNumbers;
     }
 

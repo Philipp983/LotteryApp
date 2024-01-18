@@ -9,7 +9,17 @@ import java.util.List;
 
 public class LogFiles {
 
+    private static LogFiles instance;
     public List<String> logs = new ArrayList<>();
+
+    private LogFiles() {}
+
+    public static synchronized LogFiles getInstance() {
+        if (instance == null) {
+            instance = new LogFiles();
+        }
+        return instance;
+    }
 
     public void addToLogs(String log) {
         logs.add(log);
