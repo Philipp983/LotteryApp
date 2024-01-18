@@ -10,10 +10,6 @@ import java.util.List;
 import java.util.Random;
 
 public class Lotto6aus49 extends LotteryGame {
-
-    //private static LogFiles logFiles = new LogFiles();
-
-
     @Override
     public List<Integer> generateRandomNumbers(List<Integer> unluckyNumbers) {
 
@@ -59,6 +55,9 @@ public class Lotto6aus49 extends LotteryGame {
         for (int num : unluckyNumbers) {
             if (num < 1 || num > 49) {
                 System.out.println(Messages.LOADED_NUMBER_OUT_OF_RANGE1);
+                LogFiles.getInstance().addToLogs(Messages.LOADED_NUMBER_OUT_OF_RANGE1);
+                LogFiles.getInstance().addToLogs("End of application");
+                LogFiles.getInstance().write();
                 System.exit(0);
             }
         }

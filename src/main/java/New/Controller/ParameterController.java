@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class ParameterController {
 
     private List<Integer> processedArgs = new ArrayList<>();
-    //private LogFiles logFiles = new LogFiles();
 
     public void processCommands(String[] args) {
 
@@ -64,15 +63,20 @@ public class ParameterController {
             case "Eurojackpot":
                 LogFiles.getInstance().addToLogs("Passing unlucky numbers to Eurojackpot");
                 processEurojackpot(processedArgs);
+
                 LogFiles.getInstance().addToLogs("End of application");
                 LogFiles.getInstance().write();
                 break;
             case "setunluckynumbers":
                 if (args.length == 1) {
                     System.out.println(Messages.NO_NEW_NUMBERS_PASSED);
+                    LogFiles.getInstance().addToLogs("No unlucky numbers passed");
                 } else {
                     System.out.println(Messages.NEW_NUMBERS);
                 }
+
+                LogFiles.getInstance().addToLogs("End of application");
+                LogFiles.getInstance().write();
                 break;
             case "clearunluckynumbers":
                 FileWriter.clearFile();
@@ -89,6 +93,10 @@ public class ParameterController {
             default:
                 System.err.println("\nEingabe: " + firstCommand + " wurde nicht erkannt.");
                 System.err.println(Messages.COMMAND_LIST);
+
+                LogFiles.getInstance().addToLogs("command '" + firstCommand + "' not recognized");
+                LogFiles.getInstance().addToLogs("End of application");
+                LogFiles.getInstance().write();
                 break;
         }
     }
@@ -185,17 +193,20 @@ public class ParameterController {
                     switch (args[0]) {
                         case "6aus49" -> {
                             System.out.println(Messages.NUMBER_OUT_OF_RANGE1);
-                            LogFiles.getInstance().addToLogs("Separating numbers failed: Number out of range");
+                            LogFiles.getInstance().addToLogs("Separating numbers failed: " + number + " is out of range");
                         }
                         case "Eurojackpot" -> {
                             System.out.println(Messages.NUMBER_OUT_OF_RANGE2);
-                            LogFiles.getInstance().addToLogs("Separating numbers failed: Number out of range");
+                            LogFiles.getInstance().addToLogs("Separating numbers failed: " + number + " is out of range");
                         }
                         case "setunluckynumbers" -> {
                             System.out.println(Messages.NUMBER_OUT_OF_RANGE3);
-                            LogFiles.getInstance().addToLogs("Separating numbers failed: Number out of range");
+                            LogFiles.getInstance().addToLogs("Separating numbers failed: " + number + " is out of range");
                         }
                     }
+
+                    LogFiles.getInstance().addToLogs("End of application");
+                    LogFiles.getInstance().write();
                     System.exit(0);
                 }
 

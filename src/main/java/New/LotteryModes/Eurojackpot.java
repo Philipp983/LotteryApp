@@ -68,6 +68,9 @@ public class Eurojackpot extends LotteryGame {
         for (int num : unluckyNumbers) {
             if (num < 1 || num > 50) {
                 System.out.println(Messages.LOADED_NUMBER_OUT_OF_RANGE2);
+                LogFiles.getInstance().addToLogs(Messages.LOADED_NUMBER_OUT_OF_RANGE2);
+                LogFiles.getInstance().addToLogs("End of application");
+                LogFiles.getInstance().write();
                 System.exit(0);
             }
         }

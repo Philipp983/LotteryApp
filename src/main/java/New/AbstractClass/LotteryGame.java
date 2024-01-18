@@ -13,7 +13,6 @@ public abstract class LotteryGame implements LotteryInterface {
     }
 
     public void loadUnluckyNumbers() {
-        System.out.println(unluckyNumbers);
     }
 
 

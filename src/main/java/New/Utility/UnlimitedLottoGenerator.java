@@ -1,7 +1,6 @@
 package New.Utility;
 
 import New.AbstractClass.LotteryGame;
-import New.Controller.ParameterController;
 import New.LotteryModes.Eurojackpot;
 import New.LotteryModes.Lotto6aus49;
 import New.Messages.Messages;
@@ -34,13 +33,14 @@ public class UnlimitedLottoGenerator implements Runnable {
         while (running) {
             List<Integer> numbers = lotteryGame.generateRandomNumbers(unluckyNumbers);
 
-            // Determine the type of lottery game and call the respective formatting method
             if (lotteryGame instanceof Lotto6aus49) {
                 System.out.print("Tippschein Nummer " + index + ": ");
-                LotteryTicketOutputFormatter.modify6aus49Output(numbers);  // Assuming UtilityClass is the class containing the static methods
+                LotteryTicketOutputFormatter.modify6aus49Output(numbers);
+                LogFiles.getInstance().addToLogs("Lottery ticket number " + index + " with numbers: " + numbers);
             } else if (lotteryGame instanceof Eurojackpot) {
                 System.out.print("Tippschein Nummer " + index + ": ");
                 LotteryTicketOutputFormatter.modifyEurojackpotOutput(numbers);
+                LogFiles.getInstance().addToLogs("Lottery ticket number " + index + " with numbers: " + numbers);
             }
 
             index++;
@@ -61,6 +61,7 @@ public class UnlimitedLottoGenerator implements Runnable {
         scanner.nextLine();
 
         stopGenerating();
+
         generatorThread.interrupt();
         try {
             generatorThread.join();
@@ -72,6 +73,10 @@ public class UnlimitedLottoGenerator implements Runnable {
     public void stopGenerating() {
         running = false;
         System.out.println(Messages.CLOSING);
+        LogFiles.getInstance().addToLogs("Stopped generating lottery ticket");
+        LogFiles.getInstance().addToLogs("End of application");
+        LogFiles.getInstance().write();
+
         System.exit(0);
     }
 }

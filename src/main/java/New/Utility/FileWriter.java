@@ -11,7 +11,6 @@ import java.util.List;
 
 public class FileWriter {
 
-
     public static void write(String numbers) {
         String desktopPath = System.getProperty("user.home") + "/Desktop";
 
@@ -42,6 +41,7 @@ public class FileWriter {
             if (!Files.exists(filePath)) {
                 Files.createDirectories(filePath.getParent());
                 Files.createFile(filePath);
+                LogFiles.getInstance().addToLogs("New File unlucky-numbers.txt created");
                 //System.out.println(Messages.FILE_CREATED);
             }
             String fileContent = new String(Files.readAllBytes(filePath));
@@ -63,6 +63,7 @@ public class FileWriter {
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
+        LogFiles.getInstance().addToLogs("Read out unlucky numbers from unlucky-numbers.txt are " + numbers);
         return numbers;
     }
 
