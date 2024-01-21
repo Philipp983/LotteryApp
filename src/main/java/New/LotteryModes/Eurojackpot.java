@@ -9,9 +9,22 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The Eurojackpot class extends LotteryGame to implement the functionality specific to the Eurojackpot lottery.
+ * It includes methods to generate random lottery numbers while excluding unlucky numbers,
+ * load unlucky numbers with range validation, and set unlucky numbers for the game.
+ */
 public class Eurojackpot extends LotteryGame {
 
 
+    /**
+     * Generates a combination of random numbers for the Eurojackpot lottery.
+     * The method creates 5 main numbers (from 1 to 50) and 2 Euro numbers (from 1 to 10),
+     * without unlucky numbers.
+     *
+     * @param unluckyNumbers List of numbers to be excluded from the random generation.
+     * @return A combined list of 5 main numbers and 2 Euro numbers for the Eurojackpot lottery.
+     */
     @Override
     public List<Integer> generateRandomNumbers(List<Integer> unluckyNumbers) {
         List<Integer> randomNumbers = new ArrayList<>();
@@ -49,6 +62,11 @@ public class Eurojackpot extends LotteryGame {
     }
 
 
+    /**
+     * Loads and validates unlucky numbers for the Eurojackpot game.
+     * This method checks if the unlucky numbers are within the valid range (1 to 50).
+     * If any number is out of range, it throws an IllegalArgumentException.
+     */
     @Override
     public void loadUnluckyNumbers() {
         for (int num : unluckyNumbers) {
@@ -62,6 +80,12 @@ public class Eurojackpot extends LotteryGame {
         }
     }
 
+    /**
+     * Sets unlucky numbers for the Eurojackpot game.
+     * This method overrides the setUnluckyNumbers method from the LotteryGame abstract class.
+     *
+     * @param unluckyNumbers List of numbers to set as unlucky for the Eurojackpot game.
+     */
     @Override
     public void setUnluckyNumbers(List<Integer> unluckyNumbers) {
         super.setUnluckyNumbers(unluckyNumbers);
