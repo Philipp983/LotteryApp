@@ -59,7 +59,11 @@ public class ParameterController {
                 default:
                     return;
             }
-            lotteryGame.loadUnluckyNumbers();
+            try {
+                lotteryGame.loadUnluckyNumbers();
+            } catch (IllegalArgumentException e) {
+                System.exit(0);
+            }
             processedArgs = lotteryGame.getUnluckyNumbers();
             //lotteryGame.printUnluckyNumbers();
 

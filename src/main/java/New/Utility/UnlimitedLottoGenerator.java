@@ -79,6 +79,7 @@ public class UnlimitedLottoGenerator implements Runnable {
         scanner.nextLine();
 
         stopGenerating();
+        System.exit(0);
 
         generatorThread.interrupt();
         try {
