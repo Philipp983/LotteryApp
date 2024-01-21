@@ -47,7 +47,6 @@ public class UnlimitedLottoGenerator implements Runnable {
             try {
                 Thread.sleep(1500);
             } catch (InterruptedException e) {
-                // Handle interruption
             }
         }
     }
@@ -77,6 +76,5 @@ public class UnlimitedLottoGenerator implements Runnable {
         LogFiles.getInstance().addToLogs("End of application");
         LogFiles.getInstance().write();
 
-        System.exit(0);
     }
 }
