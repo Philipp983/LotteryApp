@@ -38,7 +38,7 @@ public class LotteryTicketOutputFormatter {
                 .map(String::valueOf)
                 .collect(Collectors.joining(", ")));
 
-        System.out.println("2aus12: " + numbers2aus12.stream()
+        System.out.println("2aus10: " + numbers2aus12.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(", ")));
     }
