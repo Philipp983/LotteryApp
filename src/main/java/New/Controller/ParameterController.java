@@ -71,6 +71,14 @@ public class ParameterController {
 
         switch (firstCommand) {
             case "6aus49":
+                Lotto6aus49 loadchecker = new Lotto6aus49();
+
+                try {
+                    loadchecker.loadUnluckyNumbers();
+                } catch (IllegalArgumentException e) {
+                    System.exit(0);
+                }
+
                 LogFiles.getInstance().addToLogs("Passing unlucky numbers to 6aus49");
                 process6aus49(processedArgs);
                 LogFiles.getInstance().addToLogs("End of application");
