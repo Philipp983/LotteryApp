@@ -29,3 +29,5 @@ E.g.:
 
 
 The unlucky numbers will be saved in a file 'unlucky-numbers.txt' and events occurring in the program saved to a log file 'logs'.
+
+The Build Path is set under target/classes/, so to start the program move the current directory to /target/classes, and type java Main (+the commands)
