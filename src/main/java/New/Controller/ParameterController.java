@@ -13,10 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The ParameterController class that is responsible for processing command line arguments
+ * and executing the corresponding functionalities for a lottery application.
+ * The README file gives an overview of the different commands that are available.
+ */
 public class ParameterController {
 
     private List<Integer> processedArgs = new ArrayList<>();
 
+    /**
+     * Processes the provided command-line arguments to execute the corresponding lottery game functions.
+     * This method handles different commands and their respective logic, including generating lottery numbers,
+     * managing unlucky numbers, and starting unlimited lottery ticket generation.
+     *
+     * @param args the command-line arguments passed to the application.
+     */
     public void processCommands(String[] args) {
 
         LogFiles.getInstance().addToLogs("Start of application");
@@ -101,6 +113,12 @@ public class ParameterController {
         }
     }
 
+    /**
+     * Handles the "unlimitedlotto" command to start a continuous generation of lottery tickets.
+     * It processes additional arguments for setting up the lottery game and unlucky numbers.
+     *
+     * @param args the command-line arguments, including the lottery type and optional unlucky numbers.
+     */
     private void unlimitedLotto(String[] args) {
         if (args.length > 2) {
             extractedUnluckyNumbersForUnlimited(args);
@@ -132,6 +150,12 @@ public class ParameterController {
         }
     }
 
+    /**
+     * Extracts unlucky numbers from the command-line arguments for the "unlimitedlotto" command.
+     * It validates the numbers and adds them to the processedArgs list.
+     *
+     * @param args the command-line arguments containing the unlucky numbers.
+     */
     private void extractedUnluckyNumbersForUnlimited(String[] args) {
         if (args.length > 8) {
             System.out.println(Messages.TOO_MANY_NUMBERS);
@@ -162,6 +186,12 @@ public class ParameterController {
         }
     }
 
+    /**
+     * Extracts unlucky numbers from the command-line arguments for setting or modifying unlucky numbers.
+     * It performs validation and updates the processedArgs list with the extracted numbers.
+     *
+     * @param args the command-line arguments containing the unlucky numbers.
+     */
     private void extractedUnluckyNumbers(String[] args) {
         if (args.length > 7) {
             System.out.println(Messages.TOO_MANY_NUMBERS);
@@ -215,6 +245,12 @@ public class ParameterController {
         }
     }
 
+    /**
+     * Processes and generates lottery numbers for the "6aus49" game.
+     * It uses the processedArgs list for unlucky numbers exclusion.
+     *
+     * @param processedArgs the list of unlucky numbers to exclude from the lottery draw.
+     */
     private void process6aus49(List<Integer> processedArgs) {
         Lotto6aus49 lotto = new Lotto6aus49();
         List<Integer> randomNumbers = lotto.generateRandomNumbers(processedArgs);
@@ -222,6 +258,12 @@ public class ParameterController {
         LotteryTicketOutputFormatter.modify6aus49Output(randomNumbers);
     }
 
+    /**
+     * Processes and generates lottery numbers for the "Eurojackpot" game.
+     * It uses the processedArgs list for unlucky numbers exclusion.
+     *
+     * @param processedArgs the list of unlucky numbers to exclude from the lottery draw.
+     */
     private void processEurojackpot(List<Integer> processedArgs) {
         Eurojackpot eurojackpot = new Eurojackpot();
         List<Integer> randomNumbers = eurojackpot.generateRandomNumbers(processedArgs);
@@ -229,6 +271,10 @@ public class ParameterController {
         LotteryTicketOutputFormatter.modifyEurojackpotOutput(randomNumbers);
     }
 
+    /**
+     * Displays the currently set unlucky numbers to the user.
+     * It reads the numbers from the file and prints them to the console.
+     */
     private void showUnluckyNumbers() {
         List<Integer> numbers = FileWriter.read();
         if (numbers.isEmpty()) {
