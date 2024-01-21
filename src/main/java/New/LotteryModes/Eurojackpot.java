@@ -57,7 +57,7 @@ public class Eurojackpot extends LotteryGame {
                 LogFiles.getInstance().addToLogs(Messages.LOADED_NUMBER_OUT_OF_RANGE2);
                 LogFiles.getInstance().addToLogs("End of application");
                 LogFiles.getInstance().write();
-                System.exit(0);
+                throw new IllegalArgumentException(Messages.LOADED_NUMBER_OUT_OF_RANGE2);
             }
         }
     }

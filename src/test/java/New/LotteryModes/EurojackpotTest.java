@@ -35,4 +35,12 @@ class EurojackpotTest {
         Exception exception = assertThrows(IllegalArgumentException.class, eurojackpot::loadUnluckyNumbers);
         assertEquals(Messages.LOADED_NUMBER_OUT_OF_RANGE2, exception.getMessage());
     }
+
+    @Test
+    void loadUnluckyNumbers_OutOfRangeNumbers_ThrowsException1() {
+        List<Integer> outOfRangeNumbers = Arrays.asList(2, 6, 12);
+        eurojackpot.setUnluckyNumbers(outOfRangeNumbers);
+
+        assertDoesNotThrow(eurojackpot::loadUnluckyNumbers);
+    }
 }
