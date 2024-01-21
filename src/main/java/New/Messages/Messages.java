@@ -15,7 +15,7 @@ public class Messages {
 
     public static final String NUMBER_OUT_OF_RANGE1 = "Für Lotto 6aus49 sind nur Zahlen von 1 bis 49 gültig";
     public static final String NUMBER_OUT_OF_RANGE2 = "Für Eurojackpot sind nur Zahlen von 1 bis 50 gültig";
-    public static final String NUMBER_OUT_OF_RANGE3 = "Zum Setzen von Unglückszahlen sind nur Zahlen von 1 bis 50 gültig (beachte 6aus49 bis der Zahl 50)";
+    public static final String NUMBER_OUT_OF_RANGE3 = "Zum Setzen von Unglückszahlen sind nur Zahlen von 1 bis 50 gültig (beachte für 6aus49 die Zahl 50)";
     public static final String NEW_NUMBERS ="Die neuen Zahlen wurden gespeichert.";
 
     public static final String LOADED_NUMBER_OUT_OF_RANGE1 = "Eine noch gespeichtere Unglückszahl ist nicht im Bereich von 1 bis 49, bitte korrigieren.";
