@@ -9,8 +9,19 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The FileWriter class handles file operations related to writing and reading
+ * unlucky numbers to and from a file. It includes functionality to write a string
+ * to a file, read numbers from a file, and clear the file content.
+ */
 public class FileWriter {
 
+    /**
+     * Writes a string of numbers to a file named "unlucky_numbers.txt" on the user's desktop.
+     * If the file exists, it is deleted and created anew before writing.
+     *
+     * @param numbers The string to be written to the file.
+     */
     public static void write(String numbers) {
         String desktopPath = System.getProperty("user.home") + "/Desktop";
 
@@ -30,6 +41,13 @@ public class FileWriter {
         }
     }
 
+    /**
+     * Reads numbers from the "unlucky_numbers.txt" file on the user's desktop.
+     * If the file does not exist, it is created. The method parses the file content
+     * into integers and adds them to a list.
+     *
+     * @return A list of integers read from the file.
+     */
 
     public static List<Integer> read() {
         String desktopPath = System.getProperty("user.home") + "/Desktop";
@@ -67,6 +85,10 @@ public class FileWriter {
         return numbers;
     }
 
+    /**
+     * Clears the content of the "unlucky_numbers.txt" file on the user's desktop.
+     * If the file exists, its content is erased.
+     */
     public static void clearFile() {
         String desktopPath = System.getProperty("user.home") + "/Desktop";
 
