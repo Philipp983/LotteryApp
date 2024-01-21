@@ -27,7 +27,7 @@ public class Eurojackpot extends LotteryGame {
 
         List<Integer> euroNumbers = new ArrayList<>();
         while (euroNumbers.size() < 2) {
-            int euroNumber = random.nextInt(12) + 1;
+            int euroNumber = random.nextInt(10) + 1;
             if (!euroNumbers.contains(euroNumber)
                 && (!unluckyNumbers.contains(euroNumber))) {
                 euroNumbers.add(euroNumber);
@@ -37,7 +37,7 @@ public class Eurojackpot extends LotteryGame {
         Collections.sort(randomNumbers);
         LogFiles.getInstance().addToLogs(randomNumbers + " are the generated and sorted 5aus50 numbers");
         Collections.sort(euroNumbers);
-        LogFiles.getInstance().addToLogs(euroNumbers + " are the generated and sorted 2aus12 numbers");
+        LogFiles.getInstance().addToLogs(euroNumbers + " are the generated and sorted 2aus10 numbers");
 
         // Combine main numbers and Euro numbers into one list
         List<Integer> combinedNumbers = new ArrayList<>(randomNumbers);
